@@ -1,5 +1,5 @@
 Generic HID Remote Driver for XBMC
-----------------------------------
+==================================
 
 This is a generic hid driver for use with XBMC if your computer came with
 a hid remote or you bought one. The base code was provided by [coldsource](http://forum.xbmc.org/member.php?u=80895)
@@ -15,18 +15,18 @@ details.
 Usage
 -----
 
-### Compile the drivers
+###### Compile the drivers
 $ make
 
-### Make sure your HID remote is recognized (listed)
+###### Make sure your HID remote is recognized (listed)
 $ sudo ./hid_mapper --list-devices
 
-### Run with learn mode so you can create your map file
+###### Run with learn mode so you can create your map file
 TODO
 
-### Run with the map file to use it
+###### Run with the map file to use it
 $ sudo ./run_remote
 
-### Extra steps if you need autostart
+###### Extra steps if you need autostart
 TODO
 
