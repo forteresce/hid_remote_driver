@@ -45,7 +45,7 @@ static int get_file_contents(const char *filename,char *buf, unsigned int buf_le
 	if(fd<0) {
 		printf("Error opening file: %s\n", filename);
 		buf = "Unknown";
-		return 0;
+		return -1;
 	}
 	
 	re = read(fd,buf,buf_len);
@@ -72,7 +72,6 @@ int lookup_hid_product(int lookup_mode,const char *manufacturer,const char *prod
 
 	printf("Looking for Manufacturer : %s\n", manufacturer);
 	printf("Looking for Product : %s\n", product);
-	
 	
 	if(manufacturer!=0)
 		hid_device->num_interfaces = 0;
@@ -108,8 +107,7 @@ int lookup_hid_product(int lookup_mode,const char *manufacturer,const char *prod
 			else if(lookup_mode==LOOKUP_MODE_ID)
 				re = snprintf(filename,PATH_MAX,SYSFS_HIDRAW_CLASS_PATH "/%s/../../../../idVendor",symlink_filename);
 			
-			
-			printf("re: %d\n", re);			
+			// printf("re: %d\n", re);
 			if(re>=PATH_MAX)
 			{
 				closedir(dh);
@@ -129,7 +127,6 @@ int lookup_hid_product(int lookup_mode,const char *manufacturer,const char *prod
 			}
 			else
 			{
-				//printf("Found  Manufacturer : %s Match: %d\n",buf,strcmp(buf,manufacturer));				
 				if(manufacturer==0)
 					printf("  Manufacturer : %s\n",buf);
 				else if(strcmp(buf,manufacturer)!=0)
@@ -162,7 +159,6 @@ int lookup_hid_product(int lookup_mode,const char *manufacturer,const char *prod
 				}
 			}
 			
-			//printf("Found  Product : %s Match: %d\n",buf,strcmp(buf,product));
 			if(manufacturer==0)
 				printf("  Product name : %s\n\n",buf);
 			else if(strcmp(buf,product)==0)
@@ -193,7 +189,6 @@ int lookup_hid_product(int lookup_mode,const char *manufacturer,const char *prod
 	
 	if(hid_device->num_interfaces>0)
 		return 0;
-	
 	return -1;
 }
 
