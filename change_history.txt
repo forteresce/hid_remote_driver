@@ -1,0 +1,2 @@
+15-02-2013 Merged changes from http://www.coldsource.net/hid_mapper_beta.tar.gz as of 03-04-2011
+15-02-2013 Enhanced README
